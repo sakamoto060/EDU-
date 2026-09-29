@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 84" role="img" aria-label="Faculdade Insted">
+  <defs>
+    <linearGradient id="imBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b8adb"/>
+      <stop offset="1" stop-color="#08529e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- marca: escudo aberto com livro -->
+  <g transform="translate(6 6)">
+    <path d="M36 4 6 13v19c0 16 12 26 30 30 18-4 30-14 30-30V13L36 4z" fill="url(#imBlue)"/>
+    <path d="M36 12 15 18v14c0 11 8 19 21 22 13-3 21-11 21-22V18L36 12z" fill="#fff" opacity=".92"/>
+    <path d="M36 18v34c-9-2-16-7-19-14 6-4 13-5 19-4V18z" fill="#0b6bcb" opacity=".18"/>
+    <!-- livro aberto -->
+    <path d="M36 34c-5-3-11-4-16-2v11c5-2 11-1 16 2 5-3 11-4 16-2V32c-5-2-11-1-16 2z" fill="#0b6bcb"/>
+    <path d="M36 34v11" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+  </g>
+
+  <!-- wordmark -->
+  <g transform="translate(84 0)">
+    <text x="0" y="42" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="1" fill="#0b6bcb">INSTED</text>
+    <text x="1" y="62" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="2.6" fill="#5a7897">FACULDADE</text>
+    <rect x="1" y="70" width="120" height="3" rx="1.5" fill="#34a6ea" opacity=".55"/>
+  </g>
+</svg>

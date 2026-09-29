@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>EDU+ | Carteirinha Estudantil Digital</title>
+<meta name="description" content="EDU+ - Carteirinha estudantil digital com validacao de meia-entrada por QR Code.">
+<meta name="theme-color" content="#0b6bcb">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="EDU+">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/icons/icon-192.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="bg-decor" aria-hidden="true"></div>
+
+<!-- Mockup de smartphone: visivel apenas em telas amplas (>= 600px) -->
+<div class="stage">
+  <div class="phone">
+    <div class="phone-frame">
+      <span class="phone-notch" aria-hidden="true"></span>
+      <div class="phone-screen">
+
+        <div class="phone-scroll">
+
+          <header class="topbar">
+            <div class="brand">
+              <svg class="brand-logo" viewBox="0 0 48 48" role="img" aria-label="EDU+">
+                <path d="M24 4 6 11v13c0 11 7.7 18.9 18 20.9C34.3 42.9 42 35 42 24V11L24 4z" fill="#fff" opacity=".95"/>
+                <path d="M24 4 6 11v13c0 11 7.7 18.9 18 20.9V4z" fill="#fff"/>
+                <path d="M14 22.5h7.2l3.3-3.9 3.3 6.2 2.5-3.1H36" fill="none" stroke="#0b6bcb" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="24" cy="22.5" r="1.9" fill="#0b6bcb"/>
+              </svg>
+              <span class="brand-name">EDU+</span>
+            </div>
+            <button class="icon-btn" id="btnSettings" type="button" aria-label="Abrir configuracoes">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7zm8.4-2.6.1-.9-.1-.9 1.9-1.5-1.9-3.3-2.3.8a8 8 0 0 0-1.5-.9L16.2 3h-3.9l-.4 2.4a8 8 0 0 0-1.5.9l-2.3-.8-1.9 3.3 1.9 1.5-.1.9.1.9-1.9 1.5 1.9 3.3 2.3-.8c.45.38.95.7 1.5.9l.4 2.4h3.9l.4-2.4c.55-.2 1.05-.52 1.5-.9l2.3.8 1.9-3.3-1.9-1.5z"/></svg>
+            </button>
+          </header>
+
+          <main>
+            <!-- ============ CARTEIRINHA ============ -->
+            <section id="screenCard" class="screen is-active">
+              <div class="card-shell">
+                <article class="student-card" id="studentCard">
+
+                  <div class="card-head">
+                    <div class="card-logo-wrap" id="cardLogoWrap">
+                      <img id="instLogo" class="card-logo" alt="Logo da instituicao">
+                      <svg id="instLogoFallback" class="brand-logo card-logo" viewBox="0 0 48 48" aria-hidden="true">
+                        <path d="M24 4 6 11v13c0 11 7.7 18.9 18 20.9C34.3 42.9 42 35 42 24V11L24 4z" fill="#e9f2fd"/>
+                        <path d="M14 22.5h7.2l3.3-3.9 3.3 6.2 2.5-3.1H36" fill="none" stroke="#0b6bcb" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div class="inst-block">
+                      <span class="inst-name" id="instName">Insted - Faculdade Insted</span>
+                    </div>
+                  </div>
+
+                  <div class="card-body">
+                    <div class="photo-frame" id="photoFrame" data-shape="3x4">
+                      <img id="studentPhoto" class="student-photo" alt="Foto do estudante">
+                      <div class="photo-empty" id="photoEmpty">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4.4 0-8 2.5-8 5.5V22h16v-2.5c0-3-3.6-5.5-8-5.5z"/></svg>
+                        <span>Adicione sua foto</span>
+                      </div>
+                    </div>
+
+                    <div class="student-data">
+                      <div class="data-block">
+                        <p class="field-label">Nome Completo</p>
+                        <p class="field-value field-name" id="studentName">Victor Sakamoto</p>
+                      </div>
+
+                      <div class="data-grid">
+                        <div class="data-cell">
+                          <p class="field-label">R.A. (JACAD)</p>
+                          <p class="field-value field-ra" id="studentRa">2023156789</p>
+                        </div>
+                        <div class="data-cell">
+                          <p class="field-label">Validade</p>
+                          <p class="field-value field-valid" id="studentValid">--/----</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card-course">
+                    <span class="field-label">Curso</span>
+                    <p class="field-value field-course" id="studentCourse">Analise e Desenvolvimento de Sistemas</p>
+                  </div>
+
+                  <div class="card-badges">
+                    <span class="badge badge-active" id="badgeStatus">MEIA-ENTRADA ATIVA</span>
+                    <span class="badge badge-sync" id="badgeSync">JACAD: Sincronizado</span>
+                  </div>
+
+                  <div class="card-foot">
+                    <p class="qr-hint" id="qrHint">Escaneie para validação da meia-entrada</p>
+                    <div class="qr-frame">
+                      <div class="qr-holder" id="qrHolder"></div>
+                    </div>
+                  </div>
+
+                </article>
+
+                <p class="offline-note" id="offlineNote" hidden>Sem conexao - dados salvos no dispositivo</p>
+
+                <div class="actions">
+                  <button class="btn btn-primary" id="btnValidate" type="button">
+                    <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4V4zm2 2v2h2V6H6zm8-2h6v6h-6V4zm2 2v2h2V6h-2zM4 14h6v6H4v-6zm2 2v2h2v-2H6zm8-2h6v6h-6v-6zm2 2v2h2v-2h-2z"/></svg>
+                    Validar Carteirinha
+                  </button>
+                  <button class="btn btn-quiet" id="btnInstall" type="button" hidden>
+                    <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10.2l3.6-3.6L17 11l-5 5-5-5 1.4-1.4L12 13.2V3zM5 19h14v2H5z"/></svg>
+                    Instalar Aplicativo
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <!-- ============ CONFIG / CADASTRO ============ -->
+            <section id="screenSettings" class="screen">
+              <div class="panel">
+                <div class="panel-head">
+                  <button class="icon-btn back" id="btnBack" type="button" aria-label="Voltar">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 5.4 14 4l-8 8 8 8 1.4-1.4L8.8 12z"/></svg>
+                  </button>
+                  <h2>Configuracoes do cadastro</h2>
+                </div>
+
+                <form id="formSettings" class="form" autocomplete="off" novalidate>
+                  <section class="form-block">
+                    <h3>Instituicao de Ensino Superior</h3>
+
+                    <div class="field">
+                      <label for="instSelect">Instituicao selecionada</label>
+                      <select id="instSelect"></select>
+                    </div>
+
+                    <div class="inst-preview" id="instPreview">
+                      <div class="inst-preview-logo" id="instPreviewLogoBox">
+                        <svg class="brand-logo" viewBox="0 0 48 48" aria-hidden="true">
+                          <path d="M24 4 6 11v13c0 11 7.7 18.9 18 20.9C34.3 42.9 42 35 42 24V11L24 4z" fill="#e9f2fd"/>
+                          <path d="M14 22.5h7.2l3.3-3.9 3.3 6.2 2.5-3.1H36" fill="none" stroke="#0b6bcb" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <strong id="instPreviewName">Insted - Faculdade Insted</strong>
+                      </div>
+                    </div>
+
+                    <button class="btn btn-ghost btn-block" id="btnNewInst" type="button">+ Cadastrar nova instituicao</button>
+
+                    <div class="new-inst" id="newInstFields" hidden>
+                      <div class="field">
+                        <label for="newInstName">Nome da instituicao</label>
+                        <input type="text" id="newInstName" placeholder="Ex.: Faculdade Insted" maxlength="80">
+                      </div>
+                      <div class="field">
+                        <label for="newInstLogo">Logo da instituicao</label>
+                        <input type="file" id="newInstLogo" accept="image/*">
+                        <span class="hint">PNG ou JPG. Tamanho recomendado: 256x256.</span>
+                      </div>
+                      <div class="field-row-btns">
+                        <button class="btn btn-ghost" id="btnCancelNewInst" type="button">Cancelar</button>
+                        <button class="btn btn-primary" id="btnSaveNewInst" type="button">Salvar instituicao</button>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="form-block">
+                    <h3>Dados do estudante</h3>
+
+                    <div class="field">
+                      <label for="inputName">Nome Completo</label>
+                      <input type="text" id="inputName" placeholder="Ex.: Maria Souza Silva" maxlength="60">
+                    </div>
+
+                    <div class="field">
+                      <label for="inputRa">Registro Academico (R.A.) - JACAD</label>
+                      <input type="text" id="inputRa" inputmode="numeric" placeholder="Ex.: 2023101234" maxlength="15">
+                      <span class="hint">Use o RA matriculado no sistema academico JACAD.</span>
+                    </div>
+
+                    <div class="field">
+                      <label for="inputCourse">Curso</label>
+                      <input type="text" id="inputCourse" placeholder="Ex.: Analise e Desenvolvimento de Sistemas" maxlength="60">
+                      <span class="hint">Aparece na carteirinha, abaixo dos seus dados.</span>
+                    </div>
+
+                    <div class="field">
+                      <span class="label-plain">Foto do estudante</span>
+                      <div class="photo-picker">
+                        <div class="photo-picker-preview">
+                          <div class="photo-frame small" id="photoFrameSmall" data-shape="3x4">
+                            <img id="photoPreview" class="student-photo" alt="Pre-visualizacao da foto">
+                            <div class="photo-empty" id="photoPreviewEmpty">
+                              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4.4 0-8 2.5-8 5.5V22h16v-2.5c0-3-3.6-5.5-8-5.5z"/></svg>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="photo-picker-actions">
+                          <label class="btn btn-primary" for="fileCamera">Tirar foto</label>
+                          <input type="file" id="fileCamera" accept="image/*" capture="user" hidden>
+                          <label class="btn btn-ghost" for="fileGallery">Escolher galeria</label>
+                          <input type="file" id="fileGallery" accept="image/*" hidden>
+                          <button class="btn btn-ghost btn-danger" id="btnRemovePhoto" type="button">Remover foto</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <span class="label-plain">Formato da foto na carteirinha</span>
+                      <div class="seg" role="group" aria-label="Formato da foto">
+                        <button class="seg-btn is-on" type="button" data-shape="3x4">3x4</button>
+                        <button class="seg-btn" type="button" data-shape="circle">Circular</button>
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label for="inputValid">Validade da carteirinha</label>
+                      <input type="date" id="inputValid">
+                      <span class="hint">Usada para gerar o Hash de Validade do QR Code.</span>
+                    </div>
+                  </section>
+
+                  <div class="field-row-btns sticky">
+                    <button class="btn btn-ghost" id="btnReset" type="button">Limpar dados</button>
+                    <button class="btn btn-primary" type="submit">Salvar</button>
+                  </div>
+                </form>
+              </div>
+            </section>
+
+            <!-- ============ VALIDACAO (JACAD simulado) ============ -->
+            <section id="screenValidate" class="screen">
+              <div class="panel">
+                <div class="panel-head">
+                  <button class="icon-btn back" id="btnBackValidate" type="button" aria-label="Voltar">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 5.4 14 4l-8 8 8 8 1.4-1.4L8.8 12z"/></svg>
+                  </button>
+                  <h2 id="validateTitle">Validacao de meia-entrada</h2>
+                </div>
+
+                <div class="panel-body">
+                  <div class="jacad-status" id="jacadStatus">
+                    <span class="dot" id="jacadDot"></span>
+                    <div>
+                      <strong>JACAD (simulado)</strong>
+                      <span id="jacadText">Conectando ao sistema academico...</span>
+                    </div>
+                  </div>
+
+                  <p class="link-origem" id="validateOrigem" hidden>
+                    Este comprovante veio do link do QR Code. A assinatura (hash) foi
+                    conferida e o registro do estudante foi consultado no sistema academico.
+                  </p>
+
+                  <div class="field">
+                    <label for="inputPayload">Conteudo lido do QR Code</label>
+                    <textarea id="inputPayload" rows="4" spellcheck="false"></textarea>
+                  </div>
+
+                  <button class="btn btn-primary btn-block" id="btnValidatePayload" type="button">Validar agora</button>
+
+                  <div class="scan-actions">
+                    <button class="btn btn-ghost" id="btnUseOwn" type="button">Usar QR desta carteirinha</button>
+                  </div>
+
+                  <div id="validateResult" class="result" hidden></div>
+
+                  <div class="integracoes">
+                    <h3>Integracoes simuladas</h3>
+                    <ul>
+                      <li><strong>JACAD</strong> - matricula, RA e curso</li>
+                      <li><strong>Saguah</strong> - transacoes de meia-entrada</li>
+                      <li><strong>Hash de Validade</strong> - assinatura local do QR Code</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+
+        </div><!-- /.phone-scroll -->
+
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+      </div><!-- /.phone-screen -->
+    </div><!-- /.phone-frame -->
+  </div><!-- /.phone -->
+</div><!-- /.stage -->
+
+<!-- Endereco usado no link de validacao do QR Code. Sem esta linha o app usa
+     o proprio endereco onde esta publicado (location). Exemplos:
+     <script>window.EDU_BASE_URL = 'https://sakamoto060.github.io/Edu-/';</script> -->
+<script src="js/qrcode.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/jacad.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
